@@ -2,20 +2,17 @@
   .side-bar__user-name
     .top-items
       .top-items__name
-        %p masa
+        = current_user.name
       .top-items__icons
-        =link_to "#"  do
+        =link_to new_group_path  do
           =icon('far','edit')
-        =link_to "#"  do
+        =link_to edit_user_path(current_user) do
           =icon('fas','cog')
   .side-bar__group-list
-    .group-block
-      .group-name
-        %p techcamp
-      .group-message
-        %p まだメッセージはありません
-    .group-block
-      .group-name
-        %p techcamp
-      .group-message
-        %p まだメッセージはありません
+    - current_user.groups.each do |group|
+      .group-block
+        = link_to '#' do
+          .group-name
+            = group.name
+          .group-message
+            まだメッセージはありません
