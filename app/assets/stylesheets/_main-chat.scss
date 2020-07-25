@@ -18,6 +18,11 @@
         .member-list{
           color: #999999;
           font-size: 12px;
+          display: flex;
+          .member{
+            color: #999999;
+          font-size: 12px;
+          }
         }
       }
       &__edit-button{

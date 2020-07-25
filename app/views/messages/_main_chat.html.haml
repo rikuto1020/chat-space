@@ -3,35 +3,24 @@
     .right-header
       .right-header__group-name
         .current-group
-          test
-        .member-list
-          Member : masa
+          = @group.name
+        .member-list 
+          Member :
+          - @group.users.each do |user|
+            .member
+              = user.name
       
       .right-header__edit-button
-        = link_to "#" ,class:"right-header__edit-button__text" do
+        = link_to edit_group_path(@group) ,class:"right-header__edit-button__text" do
           edit 
   .main-chat__message-list
-    .message-field
-      .message-field__information
-        .user-name
-          masa
-        .created-at
-          2019/11/20(Wed)17:43:01
-      .message-field__content
-        おはよう
-      .message-field__information
-        .user-name
-          masa
-        .created-at
-          2019/11/20(Wed)17:43:01
-      .message-field__content
-        おはよう
+    = render @messages
     
   .main-chat__message-form
-    .footer
+    = form_with model: [@group, @message], html: {class: "footer"}, local: true do |f|
       .post-form
-        %input.post-form__message{"placeholder": "type a message", "type": "text"}
-        %label{class: "post-form__image"}
-          = icon('fas','image')
-          %input{type: "file"}
-      %input.send-button{"name": "comit", "type": "submit", "value": "Send"}
+        = f.text_field :content, class: 'post-form__message' , placeholder: 'type a message'
+        = f.label :image, class: 'post-form__image' do
+          = icon('far', 'image')
+          = f.file_field :image, class: 'Hidden'
+      = f.submit 'Send', class: 'send-button'
