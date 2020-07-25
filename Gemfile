@@ -60,3 +60,7 @@ gem "font-awesome-sass", "< 5.0.13"
 gem 'devise'
 
 gem 'pry-rails'
+
+gem 'carrierwave'
+
+gem 'mini_magick'
