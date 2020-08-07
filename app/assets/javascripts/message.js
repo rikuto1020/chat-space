@@ -1,8 +1,7 @@
 $(function(){
   function buildHTML(message){
     if (message.image){
-      let html = `<div class="main-chat__message-list">
-      <div class="message-field">
+      let html = `<div class="message-field">
       <div class="message-field__information">
       <div class="user-name">
       ${message.user_name}
@@ -21,8 +20,7 @@ $(function(){
       </div>`
     return html;
     } else {
-      let html = `<div class="main-chat__message-list">
-      <div class="message-field">
+      let html = `<div class="message-field">
       <div class="message-field__information">
       <div class="user-name">
       ${message.user_name}
@@ -57,7 +55,7 @@ $(function(){
     .done(function(data){
       let html = buildHTML(data);
       $('.main-chat__message-list').append(html);
-      $('.main-chat__message-list').animate({ scrollTop: $('.main-chat__message-list')[0].scrollHeight});
+      $('.main-chat__message-list').animate({scrollTop: $('.main-chat__message-list')[0].scrollHeight });
       $('form')[0].reset();
       $('.send-button').prop('disabled',false);
     })
